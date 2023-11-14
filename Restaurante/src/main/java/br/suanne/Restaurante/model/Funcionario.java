@@ -1,42 +1,26 @@
 package br.suanne.Restaurante.model;
-
+import br.suanne.Restaurante.dto.FuncionarioRequestDTO;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "funcionarios")
+@Entity(name = "funcionarios")
 public class Funcionario {
-    private static Long idBase = 0L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String cpf;
 
 
+    public Funcionario(FuncionarioRequestDTO Data) {
 
-    public  Funcionario(String nome, String cpf) {
-        this.id = idBase++;
         this.nome = nome;
         this.cpf = cpf;
-
     }
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-
 }
